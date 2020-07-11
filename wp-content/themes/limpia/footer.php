@@ -61,6 +61,14 @@ $footer_copyright = get_theme_mod( 'eris_footer_copyright', '' );
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-161559702-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-161559702-1');
+</script>
 </body>
 </html>

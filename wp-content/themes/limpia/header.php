@@ -24,7 +24,7 @@
 <link rel="mask-icon" href="<?php get_template_directory_uri() . '/assets/img/safari-pinned-tab.svg' ?>" color="#5bbad5">
 <meta name="msapplication-TileColor" content="#ffffff">
 <meta name="theme-color" content="#ffffff">
-
+<meta name="google-site-verification" content="68WMVUpJ22QRm-NxlgcYU6X7sJrS19ZWkBjDlM1IlJs" />
 
 
 <?php wp_head(); ?>
