@@ -23,7 +23,18 @@ $paging_type = get_theme_mod( 'paging_setting', 'infinite-scroll' );
 	<div id="primary" class="content-area listing">
 		<main id="main" class="site-main" role="main">
 
-		<?php if ( have_posts() ) {
+        <?php 
+            	$args = array(
+					'category__not_in' => '27',
+				); 
+				$loop = new WP_Query($args);
+
+        
+        ?>
+
+
+
+		<?php if (  $loop->have_posts() ) {
 
 				if ( is_home() && ! is_front_page() ) { ?>
 					<header>
@@ -37,7 +48,7 @@ $paging_type = get_theme_mod( 'paging_setting', 'infinite-scroll' );
 			<?php
 
 				/* Start the Loop */
-				while ( have_posts() ) : the_post();
+				while ( $loop->have_posts()) : $loop->the_post();
 
 					/*
 					 * Include the Post-Format-specific template for the content.
