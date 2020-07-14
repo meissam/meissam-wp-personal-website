@@ -7235,6 +7235,29 @@ body #jp-relatedposts .jp-relatedposts-items .jp-relatedposts-post .jp-relatedpo
 		max-width: 280px;
 	}
 
+	.site-branding {
+		display: table-cell;
+		margin-right: 0;
+		margin-left: 0;
+		text-align: left;
+		vertical-align: middle;
+		width: 340px;
+		position: relative;
+		padding-left: 60px;
+	}
+
+	.site-branding .custom-logo-link {
+		position: absolute;
+    left: 0;
+	}
+	.site-branding .custom-logo-link img {
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+	}
+	.custom-logo-link + .site-title {
+		font-size: 1.5rem;
+	}
 	.post-navigation {
 		margin: 8rem 0 0;
 	}
