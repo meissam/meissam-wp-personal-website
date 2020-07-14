@@ -2885,6 +2885,7 @@ a:active {
 	margin-left: 0;
 	opacity: 0;
 	visibility: hidden;
+	padding-left: 30px;
 }
 
 .main-navigation ul ul a {
