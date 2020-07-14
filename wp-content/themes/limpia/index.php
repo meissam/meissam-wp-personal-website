@@ -28,8 +28,7 @@ $paging_type = get_theme_mod( 'paging_setting', 'infinite-scroll' );
 					'category__not_in' => '27',
 				); 
 				$loop = new WP_Query($args);
-
-        
+       
         ?>
 
 
