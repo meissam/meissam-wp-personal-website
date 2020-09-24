@@ -31,7 +31,7 @@ Kirki::add_field( 'eris', array(
 	'label'       => esc_attr__( 'Paragraphs', 'eris' ),
 	'section'     => 'google_fonts_section',
 	'default'     => array(
-		'font-family'    => '"sk-modernist", "Helvetica Neue", Helvetica, Arial, sans-serif',
+		'font-family'    => '"Lato", sans-serif',
 		'variant'        => 'regular',
 		'subsets'        => array( 'latin-ext' ),
 	),
@@ -49,7 +49,7 @@ Kirki::add_field( 'eris', array(
 	'label'       => esc_attr__( 'Headings', 'eris' ),
 	'section'     => 'google_fonts_section',
 	'default'     => array(
-		'font-family'    => '"sk-modernist", "Helvetica Neue", Helvetica, Arial, sans-serif',
+		'font-family'    => '"Lato", sans-serif',
 		'variant'        => 'bold',
 		'subsets'        => array( 'latin-ext' ),
 	),
@@ -67,7 +67,7 @@ Kirki::add_field( 'eris', array(
 	'label'       => esc_attr__( 'Navigation', 'eris' ),
 	'section'     => 'google_fonts_section',
 	'default'     => array(
-		'font-family'    => '"sk-modernist", "Helvetica Neue", Helvetica, Arial, sans-serif',
+		'font-family'    => '"Lato", sans-serif',
 		'variant'        => 'regular',
 		'subsets'        => array( 'latin-ext' ),
 	),

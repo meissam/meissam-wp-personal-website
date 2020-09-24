@@ -78,12 +78,12 @@ add_action( 'customize_register', 'eris_customize_register' );
 
 // if Kirki installed
 
-if(class_exists( 'Kirki' )){
+// if(class_exists( 'Kirki' )){
 
-    // Google fonts
-    require get_template_directory() . '/inc/customizer/settings/customizer-google-fonts.php';
+//     // Google fonts
+//     require get_template_directory() . '/inc/customizer/settings/customizer-google-fonts.php';
 
-}
+// }
 
 add_action( 'wp_head', 'eris_add_loader_styles_to_header', 100 );
 function eris_add_loader_styles_to_header() {
