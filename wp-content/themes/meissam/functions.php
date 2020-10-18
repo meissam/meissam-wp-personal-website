@@ -35,6 +35,27 @@ endif;
 
 add_action( 'after_setup_theme', 'meissam_setup' );
 
+/**
+ * ============================================ Add Custom Class to Menu Item 
+ */
+
+function atg_menu_classes($classes, $item, $args) {
+	if($args->theme_location == 'menu-primary') {
+	  $classes[] = 'menu-item';
+	}
+	return $classes;
+  }
+  add_filter('nav_menu_css_class', 'atg_menu_classes', 1, 3);
+
+
+
+  function wpse156165_menu_add_class( $atts, $item, $args ) {
+	  $class = 'menu-link'; // or something based on $item
+	  $atts['class'] = $class;
+	  return $atts;
+  }
+
+  add_filter( 'nav_menu_link_attributes', 'wpse156165_menu_add_class', 10, 3 );
 
 /**
  * ============================================ Register widget area.
