@@ -83,6 +83,7 @@ add_action( 'widgets_init', 'meissam_widgets_init' );
 
 
 function meissam_scripts() {
+	wp_enqueue_style('meissam-nunito-font', get_template_directory_uri() . '/assets/css/nunito.css' , array(), _S_VERSION );
 	wp_enqueue_style('meissam-css', get_stylesheet_uri(), array(), _S_VERSION );
 
 	wp_enqueue_script('meissam-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'),  _S_VERSION , true );
@@ -92,5 +93,13 @@ add_action( 'wp_enqueue_scripts', 'meissam_scripts' );
 
 
 
+/**
+ * ============================================ Caclulate Reading Time
+ */
 
+
+ function get_the_reading_time($text, $postfix){
+		$estimated_time = ceil(sizeof(explode(" ", $text)) / 230);
+		return $estimated_time ." ". $postfix;
+ }
 
