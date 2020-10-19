@@ -9,20 +9,11 @@ get_header();
   <div class="wrapper wrapper--list" data-list-wrapper>
     <ul class="list-menu" data-list-menu>
 	    <?php
-
-				$args = array (
-					'post_type'			=> 'post',
-					'posts_per_page'	=> -1,
-				
-				);
-
 				// The Query
-				$the_query = new WP_Query( $args );
-
-			 if ( $the_query->have_posts() ) :
+			 if ( have_posts() ) :
 				$currentYear ="";
-				while ( $the_query->have_posts() ) :
-					$the_query->the_post();
+				while ( have_posts() ) :
+					the_post();
 
 					if($currentYear != get_the_date( 'Y' )){
 						$currentYear = get_the_date( 'Y' );
@@ -39,13 +30,12 @@ get_header();
 
 	<?php
 
-		if ( $the_query->have_posts() ) :
+		if ( have_posts() ) :
 		$currentYear2 ="";
 		$reachEndOfList = false;
 		$firstLoop = true;
 
-		while ( $the_query->have_posts() ) :
-			$the_query->the_post();
+		while ( have_posts() ) : the_post();
 
 
 			if($currentYear2 != get_the_date( 'Y' ) && $firstLoop){
@@ -58,7 +48,7 @@ get_header();
 				$currentYear2 = get_the_date( 'Y' );
 			}
 			
-			get_template_part( 'template-parts/content', get_post_type() );
+			get_template_part( 'template-parts/content', "archive-list-item" );
 
 			
 		endwhile;
