@@ -7,9 +7,6 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="shortcut icon" type="image/png" href="<?php echo get_template_directory_uri() . '/assets/images/favicon.png' ?>">
 
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> -->
-
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
 	<?php wp_head(); ?>
 </head>
 
@@ -37,7 +34,44 @@
   <header class="header">
   <div class="wrapper">
     <h1 class="header-title">
-      Talks and<br> workshops
+
+      <?php
+          if(is_page()){
+              the_field("header_tagline");
+          }
+          elseif(is_archive()){
+            the_archive_title();
+          }
+          else{
+             the_title();
+          }
+      ?>
+    
     </h1>
+    <div class="meta-info">
+          <?php 
+            if(is_page()){
+               // the_field("header_tagline");
+            }
+            elseif(is_archive()){
+            //  the_archive_title();
+            }
+            else{
+              the_date();
+               ?>
+                <ul>
+                  <?php 
+                    $categories = get_the_category();
+                    if ( $categories ) {
+                        foreach( $categories as $category ) {
+                        echo '<li><a href="'. get_category_link( $category->term_id ) .'">' . $category->name . '</a></li>'; 
+                        }
+                    }
+                  ?>
+                </ul>
+               <?php
+            }
+          ?>  
+    </div>
   </div>
 </header>
