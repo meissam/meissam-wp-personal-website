@@ -3,13 +3,15 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<div class="main">
+  <div class="wrapper">
 
 		<?php
 		while ( have_posts() ) :
 			the_post();
 
 			get_template_part( 'template-parts/content', get_post_type() );
+
 
 			the_post_navigation(
 				array(
@@ -26,7 +28,8 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</main><!-- #main -->
+	</div>
+	</div>
 
 <?php
 
