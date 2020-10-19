@@ -86,6 +86,7 @@ function meissam_scripts() {
 	wp_enqueue_style('meissam-nunito-font', get_template_directory_uri() . '/assets/css/nunito.css' , array(), _S_VERSION );
 	wp_enqueue_style('meissam-css', get_stylesheet_uri(), array(), _S_VERSION );
 
+	wp_enqueue_script('meissam-feather', get_template_directory_uri() . '/assets/js/feather.min.js', array(),  _S_VERSION , true );
 	wp_enqueue_script('meissam-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'),  _S_VERSION , true );
 
 }

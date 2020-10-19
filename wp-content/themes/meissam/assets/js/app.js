@@ -145,7 +145,7 @@ document.querySelectorAll('a').forEach(function(element) {
 
 
 
-
+    feather.replace();
 
 
 
