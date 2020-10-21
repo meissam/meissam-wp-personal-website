@@ -104,3 +104,133 @@ add_action( 'wp_enqueue_scripts', 'meissam_scripts' );
 		return $estimated_time ." ". $postfix;
  }
 
+
+ 
+/**
+ * ============================================ Register Custom Posttype :: Projects
+ */
+
+
+function custom_post_type_Project() {
+ 
+	// Set UI labels for Custom Post Type
+		$labels = array(
+			'name'                => _x( 'Projects', 'Post Type General Name', 'meissam' ),
+			'singular_name'       => _x( 'Project', 'Post Type Singular Name', 'meissam' ),
+			'menu_name'           => __( 'Projects', 'meissam' ),
+			'parent_item_colon'   => __( 'Parent Project', 'meissam' ),
+			'all_items'           => __( 'All Projects', 'meissam' ),
+			'view_item'           => __( 'View Project', 'meissam' ),
+			'add_new_item'        => __( 'Add New Project', 'meissam' ),
+			'add_new'             => __( 'Add Project', 'meissam' ),
+			'edit_item'           => __( 'Edit Project', 'meissam' ),
+			'update_item'         => __( 'Update Project', 'meissam' ),
+			'search_items'        => __( 'Search Project', 'meissam' ),
+			'not_found'           => __( 'Not Found', 'meissam' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'meissam' ),
+	
+		);
+		 
+	// Set other options for Custom Post Type
+		 
+		$args = array(
+			'label'               => __( 'Projects', 'meissam' ),
+			'description'         => __( 'Projects of Meissam', 'meissam' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title','editor','thumbnail' ),
+			'taxonomies'            => array(''), 	
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 20,
+			'menu_icon'           => 'dashicons-database-view',
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => false,
+			'publicly_queryable'  => true,
+			'query_var'          => true,
+			'show_in_rest'		  => true,
+			'rewrite' 		      => array('slug' => 'project'),
+		);
+		 
+		// Registering your Custom Post Type
+		register_post_type( 'projects', $args );
+	 
+	}
+	 
+	/* Hook into the 'init' action so that the function
+	* Containing our post type registration is not 
+	* unnecessarily executed. 
+	*/
+	 
+	 add_action( 'init', 'custom_post_type_Project', 0 );
+
+	
+
+	 
+/**
+ * ============================================ Register Custom Posttype :: Events
+ */
+
+
+function custom_post_type_Event() {
+ 
+	// Set UI labels for Custom Post Type
+		$labels = array(
+			'name'                => _x( 'Events', 'Post Type General Name', 'meissam' ),
+			'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'meissam' ),
+			'menu_name'           => __( 'Events', 'meissam' ),
+			'parent_item_colon'   => __( 'Parent Event', 'meissam' ),
+			'all_items'           => __( 'All Events', 'meissam' ),
+			'view_item'           => __( 'View Event', 'meissam' ),
+			'add_new_item'        => __( 'Add New Event', 'meissam' ),
+			'add_new'             => __( 'Add Event', 'meissam' ),
+			'edit_item'           => __( 'Edit Event', 'meissam' ),
+			'update_item'         => __( 'Update Event', 'meissam' ),
+			'search_items'        => __( 'Search Event', 'meissam' ),
+			'not_found'           => __( 'Not Found', 'meissam' ),
+			'not_found_in_trash'  => __( 'Not found in Trash', 'meissam' ),
+	
+		);
+		 
+	// Set other options for Custom Post Type
+		 
+		$args = array(
+			'label'               => __( 'Events', 'meissam' ),
+			'description'         => __( 'Events of Meissam', 'meissam' ),
+			'labels'              => $labels,
+			'supports'            => array( 'title','editor','thumbnail' ),
+			'taxonomies'            => array(''), 	
+			'hierarchical'        => false,
+			'public'              => true,
+			'show_ui'             => true,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => true,
+			'show_in_admin_bar'   => true,
+			'menu_position'       => 20,
+			'menu_icon'           => 'dashicons-calendar-alt',
+			'can_export'          => true,
+			'has_archive'         => true,
+			'exclude_from_search' => true,
+			'publicly_queryable'  => false,
+			'query_var'          => true,
+			'show_in_rest'		  => true,
+			'rewrite' 		      => array('slug' => 'event'),
+		);
+		 
+		// Registering your Custom Post Type
+		register_post_type( 'events', $args );
+	 
+	}
+	 
+	/* Hook into the 'init' action so that the function
+	* Containing our post type registration is not 
+	* unnecessarily executed. 
+	*/
+	 
+	 add_action( 'init', 'custom_post_type_Event', 0 );
+
+	
