@@ -15,7 +15,7 @@
 		if ( 'post' === get_post_type() ) :
 			?>
 			<div class="entry-meta">
-				<?php echo get_the_reading_time(get_post_field('post_content', the_ID())), "min") ?>
+				<?php echo get_the_reading_time(get_the_content(), "min") ?>
 			</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
