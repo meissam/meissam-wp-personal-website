@@ -19,8 +19,6 @@
           <?php if(get_bloginfo( 'description' )) {echo '<div class="site-tagline">'. get_bloginfo( 'description' ) .'</div>';} ?>
       </a>
 
-
-
       <?php wp_nav_menu( array(
             'theme_location' => 'menu-primary',
             'container' => 'nav',

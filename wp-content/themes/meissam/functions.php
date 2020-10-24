@@ -137,7 +137,7 @@ function custom_post_type_Project() {
 			'label'               => __( 'Projects', 'meissam' ),
 			'description'         => __( 'Projects of Meissam', 'meissam' ),
 			'labels'              => $labels,
-			'supports'            => array( 'title','editor','thumbnail' ),
+			'supports'            => array( 'title','editor','thumbnail', 'excerpt' ),
 			'taxonomies'            => array(''), 	
 			'hierarchical'        => false,
 			'public'              => true,
@@ -170,67 +170,17 @@ function custom_post_type_Project() {
 
 	
 
-	 
+
 /**
- * ============================================ Register Custom Posttype :: Events
+ * ============================================ Make Custom Link Relative in Menus
  */
 
 
-function custom_post_type_Event() {
- 
-	// Set UI labels for Custom Post Type
-		$labels = array(
-			'name'                => _x( 'Events', 'Post Type General Name', 'meissam' ),
-			'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'meissam' ),
-			'menu_name'           => __( 'Events', 'meissam' ),
-			'parent_item_colon'   => __( 'Parent Event', 'meissam' ),
-			'all_items'           => __( 'All Events', 'meissam' ),
-			'view_item'           => __( 'View Event', 'meissam' ),
-			'add_new_item'        => __( 'Add New Event', 'meissam' ),
-			'add_new'             => __( 'Add Event', 'meissam' ),
-			'edit_item'           => __( 'Edit Event', 'meissam' ),
-			'update_item'         => __( 'Update Event', 'meissam' ),
-			'search_items'        => __( 'Search Event', 'meissam' ),
-			'not_found'           => __( 'Not Found', 'meissam' ),
-			'not_found_in_trash'  => __( 'Not found in Trash', 'meissam' ),
-	
-		);
-		 
-	// Set other options for Custom Post Type
-		 
-		$args = array(
-			'label'               => __( 'Events', 'meissam' ),
-			'description'         => __( 'Events of Meissam', 'meissam' ),
-			'labels'              => $labels,
-			'supports'            => array( 'title','editor','thumbnail' ),
-			'taxonomies'            => array(''), 	
-			'hierarchical'        => false,
-			'public'              => true,
-			'show_ui'             => true,
-			'show_in_menu'        => true,
-			'show_in_nav_menus'   => true,
-			'show_in_admin_bar'   => true,
-			'menu_position'       => 20,
-			'menu_icon'           => 'dashicons-calendar-alt',
-			'can_export'          => true,
-			'has_archive'         => true,
-			'exclude_from_search' => true,
-			'publicly_queryable'  => false,
-			'query_var'          => true,
-			'show_in_rest'		  => true,
-			'rewrite' 		      => array('slug' => 'event'),
-		);
-		 
-		// Registering your Custom Post Type
-		register_post_type( 'events', $args );
-	 
-	}
-	 
-	/* Hook into the 'init' action so that the function
-	* Containing our post type registration is not 
-	* unnecessarily executed. 
-	*/
-	 
-	 add_action( 'init', 'custom_post_type_Event', 0 );
 
-	
+	 function wpd_nav_menu_link_atts( $atts, $item, $args, $depth ){
+		if( '/' == substr( $atts['href'], 0, 1 ) ){
+			$atts['href'] = home_url() . $atts['href'];
+		}
+		return $atts;
+	}
+	add_filter( 'nav_menu_link_attributes', 'wpd_nav_menu_link_atts', 20, 4 );
