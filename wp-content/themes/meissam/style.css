@@ -219,19 +219,17 @@ p {
   box-sizing: border-box;
 }
 
-
 body {
   background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI%2FPg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNSwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0%2BDTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI%2BDTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgMTgwIDE2MCIgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6I2ZmZmZmZjAwIiB2ZXJzaW9uPSIxLjEiDQl4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIg0JeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSIxODBweCIgaGVpZ2h0PSIxNjBweCINPg0JPGcgaWQ9IkxheWVyJTIwMSI%2BDQkJPHBhdGggaWQ9IkxpbmUiIGQ9Ik0gMjQgMTQgTCAxNTYgMTQ2ICIgc3Ryb2tlPSIjZTlkNWJhIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiLz4NCQk8cGF0aCBpZD0iTGluZTIiIGQ9Ik0gMTU2IDE0IEwgMjQgMTQ2ICIgc3Ryb2tlPSIjZTlkNWJhIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiLz4NCTwvZz4NPC9zdmc%2B)
     center top #f1f2ec;
   background-attachment: fixed;
   line-height: 1.5;
-  color: #2F4858;;
+  color: #2f4858;
 }
 
 a {
   color: #7d0d3f;
   text-decoration: none;
-  letter-spacing: -1px;
 }
 
 a:hover {
@@ -285,9 +283,29 @@ a:hover {
 }
 .lobby .my-name {
   text-transform: uppercase;
-  display: block;
+  display: flex;
   font: 800 2rem/1 "Nunito", sans-serif;
+  align-items: center;
 }
+
+.lobby .my-name img {
+  float: left;
+  margin-right: 10px;
+  border-radius: 30px;
+}
+.lobby .my-name .title-wrapper {
+  float: left;
+}
+.lobby .my-name .title-wrapper .site-title {
+  font-size: 22px;
+}
+
+.lobby .my-name .title-wrapper .site-tagline {
+  font-size: 14px;
+  margin-top: 5px;
+  color: #887177;
+}
+
 @media screen and (min-width: 600px) {
   .lobby .my-name {
     font-size: 3rem;
@@ -340,23 +358,14 @@ a:hover {
   margin: 0;
   text-transform: uppercase;
   font: 800 2.5rem/1.2 "Nunito", sans-serif;
-  letter-spacing: -0.08rem;
 }
 @media screen and (min-width: 600px) {
   .header .header-title {
-    font-size: 5rem;
+    font-size: 4rem;
   }
 }
-.header .header-title a {
-  color: #c38633;
-}
-.header .header-title a:hover {
-  color: #af782e;
-  text-decoration: none;
-}
-.header .header-date {
-  display: block;
-}
+
+
 
 /* =================================================== Main Body */
 
@@ -579,7 +588,7 @@ a:hover {
 }
 @media screen and (min-width: 600px) {
   .main .list .list-item {
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
 }
 .main .list .list-item p {
@@ -599,12 +608,63 @@ a:hover {
   display: block;
   font: 800 2rem/1.2 "Nunito", sans-serif;
 }
+
+
 @media screen and (min-width: 600px) {
   .main .list .item-title {
     font-size: 2.5rem;
   }
 }
 
+
+
+.main .list .meta-info{
+  display: flex;
+  align-items: center;
+}
+.main .list-item .meta-info .post-tags {
+  list-style: none;
+  position: relative;
+  padding-left: 20px;
+  margin-left: 20px;
+  display: flex;
+  align-items: center;
+}
+.main .list-item .meta-info .post-tags:before {
+  content: "#";
+  display: block;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #7d0d3f54;
+}
+.main .list-item .meta-info .post-tags li{
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.main .list-item .meta-info .post-tags li a{
+  padding: 2px 8px;
+  display: block;
+  background-color: #c8fceb;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #404040;
+}
+
+.main .list-item .meta-info .post-tags li a:hover {
+  background-color: #508072;
+  color: #fff;
+}
+.main .list-item .meta-info .reading-time {
+font-weight: bold;
+    color: #508072;    font-size: 17px;
+  }
+
+  .main .list-item .excerpt p {
+    margin-bottom: 15px;
+  }
 /* =================================================== Footer */
 
 .footer {
@@ -620,10 +680,40 @@ a:hover {
   }
 }
 
+.each-category {
+  margin-bottom: 60px;
+}
+.each-category ul {
+  position: relative;
+}
 
+.each-category ul:before {
+  content: "#";
+  display: block;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  color: #7d0d3f;
+}
 
-.tag-cloud-link {
+.each-category ul li {
+  list-style: none;
   display: inline-block;
-  margin-right: 20px;
-  background-color: #f5f5f5;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.each-category ul li a {
+  padding: 3px 10px;
+  display: block;
+  background-color: #c8fceb;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #404040;
+}
+
+.each-category ul li a:hover {
+  background-color: #508072;
+  color: #fff;
 }

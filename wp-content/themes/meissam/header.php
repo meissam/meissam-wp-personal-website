@@ -5,7 +5,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link rel="shortcut icon" type="image/png" href="<?php echo get_template_directory_uri() . '/assets/images/favicon.png' ?>">
+	<link rel="shortcut icon" type="image/png" href="<?php echo get_template_directory_uri() . '/assets/images/favicon.ico' ?>">
 
 	<?php wp_head(); ?>
 </head>
@@ -15,8 +15,10 @@
 
       <a href="<?php echo get_home_url()?>" class="my-name" title="Meissam Rasouli">
           <img src="<?php echo get_site_icon_url()?>" alt="<?php echo get_bloginfo( 'name' ); ?>" />
-          <div class="site-title"><?php echo get_bloginfo( 'name' ); ?></div>
-          <?php if(get_bloginfo( 'description' )) {echo '<div class="site-tagline">'. get_bloginfo( 'description' ) .'</div>';} ?>
+          <div class="title-wrapper">
+            <div class="site-title"><?php echo get_bloginfo( 'name' ); ?></div>
+            <?php if(get_bloginfo( 'description' )) {echo '<div class="site-tagline">'. get_bloginfo( 'description' ) .'</div>';} ?>
+          </div>
       </a>
 
       <?php wp_nav_menu( array(

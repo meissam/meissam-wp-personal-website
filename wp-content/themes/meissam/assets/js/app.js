@@ -5,7 +5,7 @@ document.querySelectorAll('a').forEach(function(element) {
     }
   })
   
-  
+
   // list menu
   !function () {
     var prevList, menu, lists

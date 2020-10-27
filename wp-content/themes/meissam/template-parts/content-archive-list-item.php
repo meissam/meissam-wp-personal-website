@@ -9,22 +9,27 @@
               
           </span>
         </a>
-		<p>
-			<?php the_excerpt(); ?>
-		</p>
+    <?php if( has_excerpt() ) {  ?>
+        <div class="excerpt">
+          <?php the_excerpt(); ?>
+        </div>
+    <?php } ?>
     <div class="meta-info">
+      <div class="reading-time">
         <?php echo get_the_reading_time(get_the_content(), "min") ?>
-    </div>
-    <ul>
+      </div>
+        <ul class="post-tags">
         <?php 
-          $categories = get_the_category();
-          if ( $categories ) {
-              foreach( $categories as $category ) {
-              echo '<li><a href="'. get_category_link( $category->term_id ) .'">' . $category->name . '</a></li>'; 
+          $tags = get_the_tags();
+          if ( $tags ) {
+              foreach( $tags as $tag ) {
+              echo '<li><a href="'. get_tag_link( $tag->term_id ) .'">' . $tag->name . '</a></li>'; 
               }
           }
         ?>
       </ul>
+    </div>
+    
 </li>
 
 

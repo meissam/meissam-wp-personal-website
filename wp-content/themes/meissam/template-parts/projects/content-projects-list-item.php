@@ -9,9 +9,21 @@
               
           </span>
         </a>
-		<p>
+		
 			<?php the_excerpt(); ?>
-		</p>
+    
+    <div class="meta-info">
+        <ul class="post-tags">
+        <?php 
+          $tags = get_the_tags();
+          if ( $tags ) {
+              foreach( $tags as $tag ) {
+              echo '<li><a href="'. get_tag_link( $tag->term_id ) .'">' . $tag->name . '</a></li>'; 
+              }
+          }
+        ?>
+      </ul>
+    </div>
 </li>
 
 
