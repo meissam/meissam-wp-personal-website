@@ -81,7 +81,7 @@ $table_prefix = 'mr_';
  */
 define( 'WP_DEBUG', true );
 define( 'DISALLOW_FILE_EDIT', true );
-
+define( 'JETPACK_DEV_DEBUG', true );
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */

@@ -9,15 +9,24 @@
               
           </span>
         </a>
+        <div class="date-time">
+          <span class="published-date">
+            <?php echo get_the_date('j F Y', get_the_ID()); ?>
+          </span>
+        <span class="reading-time">
+          <?php
+              $content = apply_filters('the_content', get_post_field('post_content', get_the_ID()));
+              echo get_the_reading_time($content, "min");
+          ?>
+         </span>
+        </div>
     <?php if( has_excerpt() ) {  ?>
         <div class="excerpt">
           <?php the_excerpt(); ?>
         </div>
     <?php } ?>
     <div class="meta-info">
-      <div class="reading-time">
-        <?php echo get_the_reading_time(get_the_content(), "min") ?>
-      </div>
+
         <ul class="post-tags">
         <?php 
           $tags = get_the_tags();

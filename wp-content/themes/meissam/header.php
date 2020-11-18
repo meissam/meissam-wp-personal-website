@@ -9,6 +9,9 @@
 
 	<?php wp_head(); ?>
 </head>
+<body>
+<div id="vanta"></div>
+
 
 <div class="lobby">
     <div class="wrapper">
@@ -57,10 +60,23 @@
             //  the_archive_title();
             }
             else{
-              the_date();
+             
                ?>
+
+          <div class="date-time">
+                    <span class="published-date">
+                      <?php echo get_the_date('j F Y', get_the_ID()); ?>
+                    </span>
+                  <span class="reading-time">
+                    <?php
+                        $content = apply_filters('the_content', get_post_field('post_content', get_the_ID()));
+                        echo get_the_reading_time($content, "min");
+                    ?>
+                  </span>
+                  </div>
                 <ul>
-                  <?php 
+                  <?php  
+
                     $categories = get_the_category();
                     if ( $categories ) {
                         foreach( $categories as $category ) {

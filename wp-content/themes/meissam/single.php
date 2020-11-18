@@ -4,23 +4,21 @@ get_header();
 ?>
 
 <div class="main">
-  <div class="wrapper">
 
-		<?php
+
+    <?php
 		while ( have_posts() ) :
 			the_post();
+			?>
+    <div class="wrapper">
+        <?php get_template_part( 'template-parts/content', 'posts' ); ?>
 
-			get_template_part( 'template-parts/content', get_post_type() );
+			
+    </div>
 
+    <?php
+		
 
-			the_post_navigation(
-				array(
-					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'meissam' ) . '</span> <span class="nav-title">%title</span>',
-					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'meissam' ) . '</span> <span class="nav-title">%title</span>',
-				)
-			);
-
-			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
 				comments_template();
 			endif;
@@ -28,8 +26,7 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</div>
-	</div>
+</div>
 
 <?php
 

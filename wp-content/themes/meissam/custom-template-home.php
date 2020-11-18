@@ -9,13 +9,18 @@ get_header();
   
 
   <div class="wrapper wrapper--list" data-list-wrapper>
+		<h2 class='pinned-header'>
+			<i class="icon-pushpin"></i> Pinned Posts
+		</h2>
+
+
     <ul class="list-menu" data-list-menu>
 	    <?php
 
 				$args = array (
 					'post_type'			=> 'post',
 					'posts_per_page'	=> -1,
-				
+					'post__in' => get_option( 'sticky_posts' ),
 				);
 
 				// The Query

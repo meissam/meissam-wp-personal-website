@@ -83,10 +83,13 @@ add_action( 'widgets_init', 'meissam_widgets_init' );
 
 
 function meissam_scripts() {
-	wp_enqueue_style('meissam-nunito-font', get_template_directory_uri() . '/assets/css/nunito.css' , array(), _S_VERSION );
+	wp_enqueue_style('meissam-fonts', get_template_directory_uri() . '/assets/css/fonts.css' , array(), _S_VERSION );
 	wp_enqueue_style('meissam-css', get_stylesheet_uri(), array(), _S_VERSION );
 
-	wp_enqueue_script('meissam-feather', get_template_directory_uri() . '/assets/js/feather.min.js', array(),  _S_VERSION , true );
+	wp_enqueue_script('meissam-js-scroll', get_template_directory_uri() . '/assets/js/scrollList.js', array(),  _S_VERSION , true );
+	wp_enqueue_script('meissam-js-p5', get_template_directory_uri() . '/assets/js/p5.min.js', array(),  _S_VERSION , true );
+	wp_enqueue_script('meissam-js-vanta-topology', get_template_directory_uri() . '/assets/js/vanta.topology.min.js', array(),  _S_VERSION , true );
+	wp_enqueue_script('meissam-js-clipboard', get_template_directory_uri() . '/assets/js/clipboard.min.js', array(),  _S_VERSION , true );
 	wp_enqueue_script('meissam-js', get_template_directory_uri() . '/assets/js/app.js', array('jquery'),  _S_VERSION , true );
 
 }
@@ -202,4 +205,50 @@ function custom_post_type_Project() {
                 $title = post_type_archive_title( '', false );
             }
         return $title;    
-    });
+	});
+	
+
+/**
+ * ============================================ Make Custom Link Relative in Menus
+ */
+
+	
+// Custom Callback
+            
+function your_theme_slug_comments($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment; ?>
+	<li <?php comment_class(); ?> id="comment-<?php comment_ID() ?>">
+	    
+		<div class="comment-wrap">
+			<div class="comment-img">
+				<?php echo get_avatar($comment,$args['avatar_size'],null,null,array('class' => array('img-responsive', 'img-circle') )); ?>
+			</div>
+			<div class="comment-body">
+				<h4 class="comment-author"><?php echo get_comment_author_link(); ?></h4>
+				<span class="comment-date"><?php printf(__('%1$s at %2$s', 'your-text-domain'), get_comment_date(),  get_comment_time()) ?></span>
+				<?php if ($comment->comment_approved == '0') { ?><em><i class="fa fa-spinner fa-spin" aria-hidden="true"></i> <?php _e('Comment awaiting approval', 'your-text-domain'); ?></em><br /><?php } ?>
+				<?php comment_text(); ?>
+				<span class="comment-reply"> <?php comment_reply_link(array_merge( $args, array('reply_text' => __('Reply', 'your-text-domain'), 'depth' => $depth, 'max_depth' => $args['max_depth'])), $comment->comment_ID); ?></span>
+			</div>
+		</div>
+<?php }
+
+// Enqueue comment-reply
+
+add_action('wp_enqueue_scripts', 'your_theme_slug_public_scripts');
+
+function your_theme_slug_public_scripts() {
+    if (!is_admin()) {
+        if (is_singular() && get_option('thread_comments')) { wp_enqueue_script('comment-reply'); }
+    }
+}
+
+// Enqueue fontawesome
+
+add_action('wp_enqueue_scripts', 'your_theme_slug_public_styles');
+
+function your_theme_slug_public_styles() {
+        wp_enqueue_style( 'font-awesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css', array(), '4.7.0', 'all');
+}
+
+    
